@@ -16,12 +16,29 @@ public class BlockBreak implements Listener {
         Player player = event.getPlayer();
         if(section != null) {
             for (String key : section.getKeys(false)){
-                double chance = section.getDouble("items." + key + ".chance");
+                double chance = section.getDouble("items." + key + ".chance") / 100;
                 String command = section.getString("items." + key + ".command");
                 String name = section.getString("items." + key + ".name");
+                String item = section.getString("items." + key + ".item");
+                boolean sendMessage = section.getBoolean("items." + key + ".send-message");
                 if(rngNumber() > chance) {
-                    player.sendMessage("You got " + name + "(Chance: " + chance * 100 + ")");
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName() .replaceAll("&", "§")));
+                    if(item == "NONE") {
+                        return;
+                    }else if(item != null){
+                        player.getInventory().addItem(new ItemStack(Material.getMaterial(item)));
+                    }
+                    else if(item == null) {
+                        return;
+                    }
+                    if(sendMessage == false) {
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName() .replaceAll("&", "§")));
+                    }
+                    if(sendMessage == true) {
+                        String message = section.getString("items." + key + ".message");
+                        player.sendMessage(message.replace("%item%", name .replaceAll("&", "§")));
+                        Bukkit.dispatchCommand(Bukkit.getConsoleSender(), command.replace("%player%", player.getName() .replaceAll("&", "§")));
+                    }
+                    
                 }
             }
         }

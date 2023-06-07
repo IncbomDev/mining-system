@@ -1,1 +1,21 @@
-# Enter config here
+
+# ╭━╮╭━╮╱╱╱╱╱╱╱╱╱╱╱╭━━━╮╱╱╱╱╱╱╭╮
+# ┃┃╰╯┃┃╱╱╱╱╱╱╱╱╱╱╱┃╭━╮┃╱╱╱╱╱╭╯╰╮
+# ┃╭╮╭╮┣┳━╮╭┳━╮╭━━╮┃╰━━┳╮╱╭┳━┻╮╭╋━━┳╮╭╮
+# ┃┃┃┃┃┣┫╭╮╋┫╭╮┫╭╮┃╰━━╮┃┃╱┃┃━━┫┃┃┃━┫╰╯┃
+# ┃┃┃┃┃┃┃┃┃┃┃┃┃┃╰╯┃┃╰━╯┃╰━╯┣━━┃╰┫┃━┫┃┃┃
+# ╰╯╰╯╰┻┻╯╰┻┻╯╰┻━╮┃╰━━━┻━╮╭┻━━┻━┻━━┻┻┻╯
+# ╱╱╱╱╱╱╱╱╱╱╱╱╱╭━╯┃╱╱╱╱╭━╯┃
+# ╱╱╱╱╱╱╱╱╱╱╱╱╱╰━━╯╱╱╱╱╰━━╯
+
+Items:
+  item1:
+    name: "&c&lItem 1"
+    chance: 5 # 5% chance
+    command: "say Hello World!"
+    item: "DIAMOND_SWORD" # Type NONE for no item
+    # Send a message when the player gets the item
+    send-message: false
+    message: "You got %item%!" # Use %item% to get the item name
+
+
